@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	  Mapper 인터페이스를 이용하는 또 다른 장점은 기존의 XML 을
+	   그대로 사용할 수 있음.
+	   이때 두가지 규칙이 있음.
+	   1. Mapper 인터페이스 이름과 XML Mapper 의 네임스페이스를 반드시
+		  일치시킬 것.
+	   2. Mapper 인터페이스의 메서드 이름과 XML 의 id 를 반드시 일치시킴.
+	   root-context.xml :: sqlSessionFactory 에 매퍼 xml 파일의 경로를 인식하게 함.
+-->
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.edu.dao.IF_ProductDAO">
+	<!-- 공통사용 검색쿼리 -->
+	<sql id="sqlWhere">
+		<if test="searchType !=null">
+			AND (
+			title LIKE CONCAT('%',#{searchKeyword},'%')
+			OR
+			content LIKE CONCAT('%',#{searchKeyword},'%')
+			OR
+			brand LIKE CONCAT('%',#{searchKeyword},'%')
+			)
+		</if>
+	</sql>
+	<insert id="insertBoard">
+		insert into tbl_product (name,content,brand,price,category,sales,stock,regdate,view_count,reply_count,img,thumbimg) 
+		values (#{name},#{content},#{brand},#{price},#{category},#{sales},#{stock},now(),#{view_count},#{reply_count},#{img},#{thumbimg}) 
+	</insert>
+	<select id="selectBoard" resultType="org.edu.vo.ProductVO">
+		SELECT * FROM tbl_product 
+		WHERE 1 = 1
+		<include refid="sqlWhere"></include>
+		ORDER BY bno DESC
+		LIMIT #{startNo}, #{perPageNum} 
+	</select>
+	<select id="countBno" resultType="int">
+		select count(*) from tbl_product
+		where 1 = 1
+		<include refid="sqlWhere"></include>
+	</select>
+	<update id="updateBoard">
+		update tbl_product set
+		name = #{name},
+		content = #{content},
+		brand = #{brand},
+		price = #{price},
+		category = #{category},
+		sales = #{sales},
+		stock = #{stock},
+		update_date = now(),
+		view_count = #{view_count},
+		reply_count = #{reply_count},
+		img = #{img},
+		thumbing = #{thumbing}
+		where bno = #{bno}
+	</update>
+	<delete id="deleteBoard">
+		delete from tbl_product where bno = #{bno}
+	</delete>
+	<select id="viewBoard" resultType="org.edu.vo.ProductVO">
+		select * from tbl_product where bno = #{bno}
+	</select>
+	<update id="updateViewCount">
+		update tbl_product set
+		view_count = view_count + 1
+		where bno = #{bno}
+	</update>
+	<!--카테고리 생성 (아래) -->
+	<select id="viewCateType" resultType="org.edu.vo.CategoryVO">
+	select * from tbl_category where category = #{category}
+	</select>
+	<select id="selectCateType" resultType="org.edu.vo.CategoryVO">
+	select * from tbl_category order by catesun asc
+	</select>
+	<insert id="insertCateType">
+		insert into tbl_category values(#{category}, #{catename}, #{catesun})
+	</insert>
+	<update id="updateCateType">
+		update tbl_category set
+		catename = #{catename},
+		catesun = #{catesun}
+		where category = #{category}
+	</update>
+	<delete id="deleteCateType">
+		delete from tbl_category where category = #{category}
+	</delete>
+	
+	<!--브랜드 생성 (아래) -->
+	<select id="viewBrdType" resultType="org.edu.vo.BrandVO">
+	select * from tbl_brand where brand = #{brand}
+	</select>
+	<select id="selectBrdType" resultType="org.edu.vo.BrandVO">
+	select * from tbl_brand order by brdsun asc
+	</select>
+	<insert id="insertBrdType">
+		insert into tbl_brand values(#{brand}, #{brdname}, #{brdsun})
+	</insert>
+	<update id="updateBrdType">
+		update tbl_brand set
+		brdname = #{brdname},
+		brdsun = #{brdsun}
+		where brand = #{brand}
+	</update>
+	<delete id="deleteBrdType">
+		delete from tbl_brand where brand = #{brand}
+	</delete>
+</mapper>

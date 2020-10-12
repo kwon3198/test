@@ -1,6 +1,5 @@
 package org.edu.vo;
 
-import java.util.Arrays;
 import java.util.Date;
 
 import org.hibernate.validator.constraints.NotBlank;

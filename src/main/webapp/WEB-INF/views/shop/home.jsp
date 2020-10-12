@@ -74,6 +74,7 @@
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
 						<c:forEach items="${boardList}" var="productVO" varStatus="status">
+						<td>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -99,6 +100,7 @@
 								</div>
 							</div>
 						</div>
+						</td>
 						</c:forEach>
 						
 					</div><!--features_items-->

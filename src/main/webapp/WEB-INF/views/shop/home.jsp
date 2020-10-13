@@ -81,12 +81,14 @@
 										<img src="/resources/shop/images/shop/product12.jpg" alt="" />
 										<h2>${productVO.name}</h2>
 										<p>${productVO.price}원</p>
+										<p>${productVO.brand}</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>${productVO.name}</h2>
 											<p>${productVO.price}원</p>
+											<p>${productVO.brand}</p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>

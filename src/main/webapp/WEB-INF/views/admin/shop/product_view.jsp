@@ -86,9 +86,9 @@
 									<div class="col-sm-12">
 										
 											<label for="img">IMAGE</label>
-											 
+											 <p>원본사진</p>
 											 <img src="${productVO.img}"/>
-											 
+											 <p>썸네일</p>
 											 <img src="${productVO.thumbimg}"/>
 									</div>
 									</div>

@@ -1,5 +1,6 @@
 package org.edu.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -7,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.edu.service.IF_MemberService;
+import org.edu.service.IF_ProductService;
+import org.edu.vo.CategoryVO;
 import org.edu.vo.MemberVO;
 import org.edu.vo.PageVO;
+import org.edu.vo.ProductVO;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +34,8 @@ public class ShopController {
 	
 	@Inject
 	private IF_MemberService memberService;
+	@Inject
+	private IF_ProductService productService;
 	
 	
 	/**
@@ -120,10 +126,21 @@ public class ShopController {
 	}
 	/**
 	 * 샵 홈 입니다.
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String shop(Locale locale, Model model) {
-		
+	public String boardList(@ModelAttribute("pageVO") PageVO pageVO, Locale locale, Model model) throws Exception {
+		//PageVO pageVO = new PageVO();//매개변수로 받기전 테스트용
+		if(pageVO.getPage() == null) {
+			pageVO.setPage(1);//초기 page변수값 지정
+		}
+		pageVO.setPerPageNum(10);//1페이지당 보여줄 게시물 수 강제지정
+		pageVO.setTotalCount(productService.countBno(pageVO));//강제로 입력한 값을 쿼리로 대체OK.
+		List<ProductVO> list = productService.selectBoard(pageVO);
+		//모델클래스로 jsp화면으로 productService에서 셀렉트한 list값을 boardList변수명으로 보낸다.
+		//model { list -> boardList -> jsp }
+		model.addAttribute("boardList", list);
+		model.addAttribute("pageVO", pageVO);
 		return "shop/home";
 	}
 	

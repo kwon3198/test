@@ -29,10 +29,16 @@
 	    </beans:constructor-arg>
 	</beans:bean> 
 	-->
-	<!-- 업로드한 파일이 저장되는 위치: 로컬PC용  -->
-	<beans:bean class="java.lang.String" id="uploadPath">
- 	<beans:constructor-arg value="C:\egov\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\test\resources" />
+	<!-- 업로드한 파일이 저장되는 위치: 운영서버용 /tmp -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+	    <beans:constructor-arg value="/tmp">
+	    </beans:constructor-arg>
 	</beans:bean>
+	<!-- 업로드한 파일이 저장되는 위치: 로컬PC용  
+	<beans:bean class="java.lang.String" id="uploadPath">
+ 	<beans:constructor-arg value="C:\egov\workspace\test\src\main\webapp\resources" />
+	</beans:bean>
+	-->
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
 	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">

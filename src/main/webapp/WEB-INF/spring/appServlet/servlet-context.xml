@@ -23,17 +23,17 @@
 	<context:component-scan base-package="org.edu.controller" />
 	<context:component-scan base-package="org.edu.util"/>	
 	
-	<!-- 업로드한 파일이 저장되는 위치: 운영서버에 올리때는 /tmp 로 변경 후 올리세요
+	<!-- 업로드한 파일이 저장되는 위치: 운영서버에 올리때는 /tmp 로 변경 후 올리세요-->
 	<beans:bean id="uploadPath" class="java.lang.String">
 	    <beans:constructor-arg value="/tmp">
 	    </beans:constructor-arg>
 	</beans:bean> 
-	-->
-	<!-- 업로드한 파일이 저장되는 위치: 로컬PC용  -->
+	
+	<!-- 업로드한 파일이 저장되는 위치: 로컬PC용  
 	<beans:bean class="java.lang.String" id="uploadPath">
  	<beans:constructor-arg value="C:\egov\workspace\test\src\main\webapp\resources" />
 	</beans:bean>
-	
+	-->
 	
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />

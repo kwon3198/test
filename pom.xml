@@ -251,7 +251,18 @@
 		    <groupId>net.coobird</groupId>
 		    <artifactId>thumbnailator</artifactId>
 		    <version>0.4.8</version>
-		</dependency>   
+		</dependency> 
+		<!-- 파스타 클라우드용 DB사용 추가 -->
+		<dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-spring-service-connector</artifactId>
+	        <version>1.2.3.RELEASE</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.springframework.cloud</groupId>
+	        <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+	        <version>1.2.3.RELEASE</version>
+	    </dependency>  
 	</dependencies>
 	<build>
 		<plugins>

@@ -1,0 +1,10 @@
+---
+applications:
+- name: testpaasta3198
+  memory: 1024M
+  host: testpaasta3198
+  domain: paas-ta.org
+  services:
+  - kwonheekyung-mysql-db
+  instances: 1
+  disk_quota: 1024M

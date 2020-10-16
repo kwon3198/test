@@ -82,14 +82,14 @@
 										<h2>${productVO.name}</h2>
 										<p>${productVO.price}원 </p>
 										<p>${productVO.brand}</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<a href="/shop/menu/detail?bno=${productVO.bno}&page=${pageVO.page}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>상세보기</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>${productVO.name}</h2>
 											<p>${productVO.price}원</p>
 											<p>${productVO.brand}</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<a href="/shop/menu/detail?bno=${productVO.bno}&page=${pageVO.page}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>상세보기</a>
 										</div>
 									</div>
 								</div>

@@ -78,9 +78,9 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="/resources/shop/images/shop/product12.jpg" alt="" />
+										<img src="${productVO.thumbimg}" alt="썸네일" />
 										<h2>${productVO.name}</h2>
-										<p>${productVO.price}원</p>
+										<p>${productVO.price}원 </p>
 										<p>${productVO.brand}</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>

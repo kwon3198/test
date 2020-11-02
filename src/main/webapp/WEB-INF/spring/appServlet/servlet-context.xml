@@ -38,7 +38,12 @@
 	<beans:bean class="java.lang.String" id="uploadPath">
  	<beans:constructor-arg value="C:\egov\workspace\test\src\main\webapp\resources" />
 	</beans:bean>
+<<<<<<< HEAD
 	-->
+=======
+	
+	
+>>>>>>> branch 'master' of https://github.com/kwon3198/test.git
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
 	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">

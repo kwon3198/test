@@ -69,12 +69,23 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="apmsetup"></property>
 	</bean>
+<<<<<<< HEAD
 	-->
 	<!-- 클라우드 파스타용 db커넥션 설치 (아래) -->
 	<cloud:data-source id="dataSource" service-name="test-mysql-db">
 	<cloud:connection properties="sessionVariables=sql_mode='ANSI';characterEncoding=UTF-8"/>
 	<cloud:pool pool-size="5-30" max-wait-time="3000"/>
 	</cloud:data-source>
+=======
+	
+	<!-- 클라우드 파스타용 db커넥션 설치 (아래)
+	<cloud:data-source id="dataSource" service-name="test-mysql-db">
+	<cloud:connection properties="sessionVariables=sql_mode='ANSI';characterEncoding=UTF-8"/>
+	<cloud:pool pool-size="5-30" max-wait-time="3000"/>
+	</cloud:data-source>
+	 -->
+	
+>>>>>>> branch 'master' of https://github.com/kwon3198/test.git
 	<!--
 		DataSource 설정으로 JDBC 연결후, MyBatis와 MySql을 연동시킴. 
 		SqlSessionFactory : myBatis와 스프링의 Connection 생성.

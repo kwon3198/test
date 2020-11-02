@@ -1,0 +1,10 @@
+---
+applications:
+- name: testpaasta31
+  memory: 1024M
+  host: testpaasta31
+  domain: paas-ta.org
+  services:
+  - test-mysql-db
+  instances: 1
+  disk_quota: 1024M
